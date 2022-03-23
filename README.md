@@ -56,25 +56,18 @@ http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/1
 
 ## Architecture and Tech features
 <ul>
-  <li>Written in <a href="https://www.java.com/">Java</a> language</li>
-  <li>Uses Spring Boot, Spring Data JPA, Spring Security, Rest Repositories</li>
-  <li>Uses <a href="https://spring.io/projects/spring-security">Spring Security</a> for authentication and access-control</li>
-  <li>Uses BCrypt password encoder for encode password</li>
-  <li>Uses <a href="https://jwt.io/">JWT</a> Token for authentication</li>
-  <li>Uses <a href="https://projectlombok.org/">Lombok</a> to avoid writing repetitive Java code and/or boilerplate code.</li>
- 
-  <li>Uses <a href="http://modelmapper.org/">ModelMapper</a> for Object mapping</li>
-  <li>Uses <a href="https://maven.apache.org/">Maven</a> for dependency management and building project</li>
-  <li>Uses <a href="https://www.h2database.com/">H2</a> database for testing mod</li>
-  <li>Uses <a href="https://www.mysql.com/">MySQL</a> database for production mod</li>
-  
-  <li>Uses TDD with integration testing</li>
-  
-  
-  
-  
- 
-  
-  <li>Uses Three Layer Architecture Pattern</li>
-  
+  <li>Written in <a href="https://www.java.com/">Java</a> language uses <a href="https://spring.io/projects/spring-boot">Spring Boot</a></li>
+  <li><a href="https://spring.io/projects/spring-data-jpa">Spring Data JPA</a> for working with database</li>
+  <li><a href="https://spring.io/projects/spring-security">Spring Security</a> for authentication and access-control</li>
+  <li><a href="https://en.wikipedia.org/wiki/Bcrypt">BCrypt</a> password encoder for encode password</li>
+  <li><a href="https://jwt.io/">JWT</a> Token for authentication</li>
+  <li><a href="https://projectlombok.org/">Lombok</a> to avoid writing repetitive Java code and/or boilerplate code</li>
+  <li>Spring Boot Validation to validate Data Access Objects in request</li>
+  <li><a href="http://modelmapper.org/">ModelMapper</a> for Object mapping</li>
+  <li><a href="https://maven.apache.org/">Maven</a> for dependency management and building project</li>
+  <li><a href="https://www.h2database.com/">H2</a> database for testing mod</li>
+  <li><a href="https://www.mysql.com/">MySQL</a> database for production mod</li>
+  <li>Design Patterns: Singleton, Builder, Dependency Injection, Three Layer Architecture</li>
+  <li>TDD with integration testing</li>
+  <li><a href="https://aws.amazon.com/">Amazon Web Services</a> for storage database and server side API</li>
 </ul>
