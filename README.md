@@ -1,13 +1,16 @@
 # TasteIt API
-Spring REST API Project
+Spring Boot REST API Project
 
 If you like to travel the world and eat delicious food at the same time, then this is the API for you. It contains information about the most loved and most popular dishes in different countries. In the TasteIt API you will find information about the country that interests you and about those national dishes that you should definitely try there.
 
 ### Pagination: 
-Requests that return multiple items will be limited to 25 results by default. You can access other pages using the ?page paramater:
+
+Requests that return multiple items will be limited to 25 results by default. You can access other pages using the ?page paramater.
+
 http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/page?pageNo=1
 
 ### Get Countries:
+
 http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/page
 
 Gets Countries from the API, you can apply several filters using url parameters, the available options are listed below.
@@ -46,12 +49,15 @@ Gets Countries from the API, you can apply several filters using url parameters,
 </table>
 
 ### Get a single Country:
+
 http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/1
 
 ### Get dishes by Country id:
+
 http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/1/dishes
 
 ### Get comments by Country id:
+
 http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/1/comments
 
 ## Architecture and Tech features
@@ -71,3 +77,22 @@ http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/1
   <li>TDD with integration testing</li>
   <li><a href="https://aws.amazon.com/">Amazon Web Services</a> for storage database and server side API</li>
 </ul>
+
+## Author
+
+Tatiana Samoilenko
+
+tatismoilenko@gmail.com
+
+Israel
+
+## TODO
+<ul>
+  <li>Get Country By Name</li>
+  <li>Get Random Country</li>
+  <li>Get Countries By Сontinent</li>
+  <li>Get All Dishes</li>
+  <li>Get Random Dish</li>
+  <li>To fill Database</li>
+</ul>
+
