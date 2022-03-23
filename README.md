@@ -71,8 +71,8 @@ http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/1
   <li>Spring Boot Validation to validate Data Access Objects in request</li>
   <li><a href="http://modelmapper.org/">ModelMapper</a> for Object mapping</li>
   <li><a href="https://maven.apache.org/">Maven</a> for dependency management and building project</li>
-  <li><a href="https://www.h2database.com/">H2</a> database for testing mod</li>
-  <li><a href="https://www.mysql.com/">MySQL</a> database for production mod</li>
+  <li><a href="https://www.h2database.com/">H2</a> database for testing mode</li>
+  <li><a href="https://www.mysql.com/">MySQL</a> database for production mode</li>
   <li>Design Patterns: Singleton, Builder, Dependency Injection, Three Layer Architecture</li>
   <li>TDD with integration testing</li>
   <li><a href="https://aws.amazon.com/">Amazon Web Services</a> for storage database and server side API</li>
