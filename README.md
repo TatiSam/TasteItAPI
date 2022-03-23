@@ -1,8 +1,7 @@
-# Taste It API
+# TasteIt API
 Spring REST API Project
 
-### Root Endpoint:
-http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/
+If you like to travel the world and eat delicious food at the same time, then this is the API for you. It contains information about the most loved and most popular dishes in different countries. In the TasteIt API you will find information about the country that interests you and about those national dishes that you should definitely try there.
 
 ### Pagination: 
 Requests that return multiple items will be limited to 25 results by default. You can access other pages using the ?page paramater:
