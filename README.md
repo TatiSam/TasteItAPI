@@ -1,7 +1,7 @@
 # TasteIt API
 Spring Boot REST API Project
 
-If you like to travel the world and eat delicious food at the same time, then this is the API for you. It contains information about the most loved and most popular dishes in different countries. In the TasteIt API you will find information about the country that interests you and about those national dishes that you should definitely try there.
+TasteIt API contains information about the most loved and most popular dishes in different countries. In this API you will find information about the country that interests you and about those national dishes that you should definitely try there.
 
 ### Pagination: 
 
