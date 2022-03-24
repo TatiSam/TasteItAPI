@@ -7,7 +7,7 @@ If you like to travel the world and eat delicious food at the same time, then th
 
 Requests that return multiple items will be limited to 25 results by default. You can access other pages using the ?page paramater.
 
-http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/page?pageNo=1
+http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/page?pageNo=0
 
 ### Get Countries:
 
