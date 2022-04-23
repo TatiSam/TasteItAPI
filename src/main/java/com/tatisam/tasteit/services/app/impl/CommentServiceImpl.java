@@ -28,7 +28,9 @@ public class CommentServiceImpl implements CommentService {
     private final TypeMap<Comment, CommentDTO> toDto;
     private final TypeMap<CommentDTO, Comment> toComment;
 
-    public CommentServiceImpl(CountryRepository countryRepository, CommentRepository commentRepository, ModelMapper modelMapper) {
+    public CommentServiceImpl(CountryRepository countryRepository,
+                              CommentRepository commentRepository,
+                              ModelMapper modelMapper) {
         this.countryRepository = countryRepository;
         this.commentRepository = commentRepository;
         toDto = modelMapper.createTypeMap(Comment.class, CommentDTO.class);
@@ -40,6 +42,7 @@ public class CommentServiceImpl implements CommentService {
      * @param countryId {@link Country} id
      * @param dto {@link CommentDTO}
      * @return {@link CommentDTO} from created {@link Comment}
+     * @throws {@link ResourceNotFoundException} when country with countryId not exists in database
      * @since 22/03/22
      */
     @Override
@@ -61,37 +64,41 @@ public class CommentServiceImpl implements CommentService {
      */
     @Override
     public List<CommentDTO> getCommentsByCountryId(long countryId) {
-        List<Comment> comments = commentRepository.findCommentsByCountryId(countryId);
+        List<Comment> comments = commentRepository.findCommentsByCountryIdOrderByDateDesc(countryId);
         return comments.stream().map(toDto::map).collect(Collectors.toList());
     }
 
     /**
      * Update {@link Comment} in database by id
-     * @param id {@link Comment} id
+     * @param commentId {@link Comment} id
      * @param dto {@link CommentDTO}
      * @return {@link CommentDTO} from updated Comment
+     * @throws {@link ResourceNotFoundException} when comment with commentId not exists in database
      * @since 22/03/22
      */
     @Override
-    public CommentDTO updateCommentById(long id, CommentDTO dto) {
-        Comment beforeEdit = commentRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Comment", "id", id));
+    public CommentDTO updateCommentById(long commentId, CommentDTO dto) {
+        Comment beforeEdit = commentRepository.findById(commentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Comment", "id", commentId));
         Comment edited = toComment.map(dto);
         edited.setId(beforeEdit.getId());
         edited.setCountry(beforeEdit.getCountry());
+        edited.setDate(beforeEdit.getDate());
         Comment saved = commentRepository.save(edited);
         return toDto.map(saved);
     }
 
     /**
      * Delete {@link Comment} from database by id
-     * @param id {@link Comment} id
+     * @param commentId {@link Comment} id
+     * @return deleted {@link CommentDTO}
+     * @throws {@link ResourceNotFoundException} when comment with commentId not exists in database
      * @since 22/03/22
      */
     @Override
-    public CommentDTO deleteCommentById(long id) {
-        Comment comment = commentRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Comment", "id", id));
+    public CommentDTO deleteCommentById(long commentId) {
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Comment", "id", commentId));
         commentRepository.delete(comment);
         return toDto.map(comment);
     }

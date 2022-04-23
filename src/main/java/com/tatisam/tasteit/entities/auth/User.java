@@ -1,5 +1,7 @@
 package com.tatisam.tasteit.entities.auth;
 
+import com.tatisam.tasteit.entities.app.Country;
+import com.tatisam.tasteit.entities.app.Dish;
 import lombok.*;
 
 import javax.persistence.*;
@@ -54,4 +56,40 @@ public class User {
             )
     )
     private Set<Role> roles;
+
+    @ToString.Exclude
+    @ManyToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
+    @JoinTable(
+            name = "user_countries",
+            joinColumns = @JoinColumn(
+                    name = "user_id",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "country_id",
+                    referencedColumnName = "id"
+            )
+    )
+    private Set<Country> countries;
+
+    @ToString.Exclude
+    @ManyToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
+    @JoinTable(
+            name = "user_dishes",
+            joinColumns = @JoinColumn(
+                    name = "user_id",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "dish_id",
+                    referencedColumnName = "id"
+            )
+    )
+    private Set<Dish> dishes;
 }

@@ -1,8 +1,10 @@
 package com.tatisam.tasteit.entities.app;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Class Entity for Comment in application
@@ -22,6 +24,10 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private long id;
+
+    @Column(nullable = false, updatable = false)
+    @CreationTimestamp
+    private Date date;
 
     private String name;
     private String email;

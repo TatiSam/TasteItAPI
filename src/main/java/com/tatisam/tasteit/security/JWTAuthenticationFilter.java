@@ -52,7 +52,8 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         if (user.isPresent()){
             var userName = user.get();
             UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
-            var auth = new UsernamePasswordAuthenticationToken(userDetails.getUsername(), null, userDetails.getAuthorities());
+            var auth = new UsernamePasswordAuthenticationToken(userDetails.getUsername(),
+                    null, userDetails.getAuthorities());
             auth.setDetails(request);
             SecurityContextHolder.getContext().setAuthentication(auth);
         }

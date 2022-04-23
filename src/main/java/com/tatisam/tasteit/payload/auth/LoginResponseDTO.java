@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 /**
  * The Data Access Object is used to response data from the server after login
  * @author Tatiana Samoilenko

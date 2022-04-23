@@ -32,6 +32,9 @@ public class Country {
     private String article;
     private String imgPath;
 
+    private int rateCount;
+    private double rating;
+
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Dish> dishes = new HashSet<>();
 

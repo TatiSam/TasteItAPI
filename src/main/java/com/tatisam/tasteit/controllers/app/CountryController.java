@@ -34,7 +34,7 @@ public class CountryController {
      */
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public ResponseEntity<CountryDTO> addCountry(@Valid @RequestBody CountryDTO dto){
+    public ResponseEntity<CountryDTO> createCountry(@Valid @RequestBody CountryDTO dto){
         return new ResponseEntity<>(countryService.createCountry(dto), HttpStatus.CREATED);
     }
 
@@ -72,6 +72,27 @@ public class CountryController {
     }
 
     /**
+     * Get {@link com.tatisam.tasteit.entities.app.Country} by name
+     * @param name {@link com.tatisam.tasteit.entities.app.Country} name
+     * @return {@link ResponseEntity} with status Ok and {@link CountryDTO}
+     * @since 22/04/22
+     */
+    @GetMapping("/name/{name}")
+    public ResponseEntity<CountryDTO> getCountryByName(@PathVariable String name){
+        return ResponseEntity.ok().body(countryService.getCountryByName(name));
+    }
+
+    /**
+     * Get random {@link com.tatisam.tasteit.entities.app.Country}
+     * @return {@link ResponseEntity} with status Ok and random {@link CountryDTO}
+     * @since 22/04/22
+     */
+    @GetMapping("/random")
+    public ResponseEntity<CountryDTO> getRandomCountry(){
+        return ResponseEntity.ok().body(countryService.getRandomCountry());
+    }
+
+    /**
      * Update {@link com.tatisam.tasteit.entities.app.Country} by id
      * @param id {@link com.tatisam.tasteit.entities.app.Country} id
      * @param dto {@link CountryDTO}
@@ -97,5 +118,18 @@ public class CountryController {
     public ResponseEntity<String> deleteCountryById(@PathVariable long id){
         countryService.deleteCountryById(id);
         return ResponseEntity.ok().body("Country deleted successfully");
+    }
+
+    /**
+     * Add rating to  {@link com.tatisam.tasteit.entities.app.Country}
+     * @param id {@link com.tatisam.tasteit.entities.app.Country} id
+     * @param newRateValue rating value from user
+     * @return {@link ResponseEntity} with status Ok and updated {@link CountryDTO}
+     * @since 22/04/22
+     */
+    @PostMapping("/{id}/rating/{newRateValue}")
+    public ResponseEntity<CountryDTO> addRatingToCountry(@PathVariable("id") long id,
+                                              @PathVariable("newRateValue") int newRateValue){
+        return ResponseEntity.ok().body(countryService.addRatingToCountry(id, newRateValue));
     }
 }

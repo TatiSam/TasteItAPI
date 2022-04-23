@@ -16,6 +16,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
@@ -91,6 +92,32 @@ public class CountryServiceImpl implements CountryService {
     }
 
     /**
+     * Get {@link Country} by name
+     * @param name {@link Country} name
+     * @return {@link CountryDTO}
+     * @since 22/04/22
+     */
+    @Override
+    public CountryDTO getCountryByName(String name) {
+        var country = countryRepository.findCountryByNameContains(name)
+                .orElseThrow(()-> new ResourceNotFoundException("Country", "name", name));
+        return toDto.map(country);
+    }
+
+    /**
+     * Get random {@link Country}
+     * @return random {@link CountryDTO}
+     * @since 22/04/22
+     */
+    @Override
+    public CountryDTO getRandomCountry() {
+        Random rand = new Random();
+        var countries = countryRepository.findAll();
+        var randomCountry = countries.get(rand.nextInt(countries.size()));
+        return toDto.map(randomCountry);
+    }
+
+    /**
      * Update {@link Country} in database by id
      * @param id {@link Country} id
      * @param dto {@link CountryDTO}
@@ -103,6 +130,25 @@ public class CountryServiceImpl implements CountryService {
         country.setName(dto.getName());
         country.setArticle(dto.getArticle());
         country.setImgPath(dto.getImgPath());
+        return toDto.map(countryRepository.save(country));
+    }
+
+    /**
+     * Add rating to {@link Country}
+     * @param id {@link Country} id
+     * @param newRateValue rating value from user
+     * @return updated {@link CountryDTO}
+     * @since 22/04/22
+     */
+    @Override
+    public CountryDTO addRatingToCountry(long id, int newRateValue) {
+        Country country = getCountryEntityById(id);
+        int rateCount = country.getRateCount();
+        double rating = country.getRating();
+        double newRating = (rating * rateCount + newRateValue)/(++rateCount);
+        newRating = Math.round(newRating*100.0)/100.0;
+        country.setRateCount(rateCount);
+        country.setRating(newRating);
         return toDto.map(countryRepository.save(country));
     }
 

@@ -2,6 +2,7 @@ package com.tatisam.tasteit.exceptions;
 
 import com.tatisam.tasteit.exceptions.app.DuplicateResourceException;
 import com.tatisam.tasteit.exceptions.app.ResourceNotFoundException;
+import com.tatisam.tasteit.exceptions.app.UserResourcesException;
 import com.tatisam.tasteit.exceptions.auth.RegisterException;
 import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.http.HttpHeaders;
@@ -37,9 +38,10 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
      * @since 28/02/22
      */
     @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-                                                                  HttpHeaders headers, HttpStatus status,
-                                                                  WebRequest request) {
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(
+            MethodArgumentNotValidException ex,
+            HttpHeaders headers, HttpStatus status,
+            WebRequest request) {
         var map = new HashMap<String, String>();
         var fieldErrors = ex.getBindingResult().getFieldErrors();
         for (FieldError fieldError : fieldErrors) {
@@ -61,8 +63,9 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
      * @since 28/02/22
      */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ResponseEntity<ErrorDetails> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex,
-                                                                                  WebRequest request) {
+    public ResponseEntity<ErrorDetails> handleMethodArgumentTypeMismatchException(
+            MethodArgumentTypeMismatchException ex,
+            WebRequest request) {
         var errorDetails = new ErrorDetails(new Date(), ex.getMessage(),
                 request.getDescription(false)
         );
@@ -81,6 +84,20 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
                 ex.getFieldName(), ex.getFieldValue());
         var errorDetails = new ErrorDetails(new Date(), ex.getMessage(), details);
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }
+
+    /**
+     * Handle UserResourcesException
+     * @param ex {@link UserResourcesException}
+     * @return {@link ResponseEntity} with status Forbidden and {@link ErrorDetails}
+     * @since 22/04/22
+     */
+    @ExceptionHandler(UserResourcesException.class)
+    public ResponseEntity<ErrorDetails> handleUserResourcesException(UserResourcesException ex) {
+        String details = String.format("Failed for [%s]: %s. %s",
+                ex.getResourceId(), ex.getResourceValue(), ex.getMessage());
+        var errorDetails = new ErrorDetails(new Date(), ex.getMessage(), details);
+        return new ResponseEntity<>(errorDetails, HttpStatus.FORBIDDEN);
     }
 
     /**

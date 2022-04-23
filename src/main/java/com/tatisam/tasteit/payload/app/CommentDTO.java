@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 
 /**
  * The Data Access Object is used to request data about {@link com.tatisam.tasteit.entities.app.Comment}
@@ -19,6 +20,8 @@ import javax.validation.constraints.NotEmpty;
 @Builder
 public class CommentDTO {
     private long id;
+
+    private Date date;
 
     @NotEmpty(message = "{com.tatisam.constraints.name.NotEmpty.message}")
     private String name;

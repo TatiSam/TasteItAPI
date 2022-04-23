@@ -7,6 +7,7 @@ import com.tatisam.tasteit.entities.auth.User;
 import com.tatisam.tasteit.exceptions.auth.RegisterException;
 import com.tatisam.tasteit.payload.auth.LoginDTO;
 import com.tatisam.tasteit.payload.auth.SignUpDTO;
+import com.tatisam.tasteit.repositories.app.CountryRepository;
 import com.tatisam.tasteit.repositories.auth.RoleRepository;
 import com.tatisam.tasteit.repositories.auth.UserRepository;
 import com.tatisam.tasteit.services.auth.AuthService;
@@ -32,15 +33,17 @@ import java.util.Date;
 public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final CountryRepository countryRepository;
     private final Environment environment;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
     public AuthServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
-                           Environment environment, PasswordEncoder passwordEncoder,
+                           CountryRepository countryRepository, Environment environment, PasswordEncoder passwordEncoder,
                            AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.countryRepository = countryRepository;
         this.environment = environment;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;

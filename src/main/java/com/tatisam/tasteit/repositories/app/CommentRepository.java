@@ -13,5 +13,5 @@ import java.util.List;
  * @since 22/03/22
  */
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-    List<Comment> findCommentsByCountryId(long id);
+    List<Comment> findCommentsByCountryIdOrderByDateDesc(long id);
 }

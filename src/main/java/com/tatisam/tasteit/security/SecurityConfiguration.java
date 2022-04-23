@@ -68,7 +68,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
-        http.addFilterBefore(new JWTAuthenticationFilter(environment, customUserDetailsService), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(new JWTAuthenticationFilter(environment, customUserDetailsService),
+                UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override

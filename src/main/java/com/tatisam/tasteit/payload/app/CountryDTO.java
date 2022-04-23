@@ -32,6 +32,8 @@ public class CountryDTO {
     @Size(min = 6, message = "{com.tatisam.constraints.countryImgPath.Size.message}")
     private String imgPath;
 
+    private double rating;
+
     private Set<DishDTO> dishes;
 
     private Set<CommentDTO> comments;

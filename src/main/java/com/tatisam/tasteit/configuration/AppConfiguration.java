@@ -14,6 +14,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "com.tatisam")
 public class AppConfiguration {
-    String jwtSecret = "2kwAf0aOoM";
+    String jwtSecret = "f3g54Tp8wL";
     long jwtExpires = 86400000;
 }

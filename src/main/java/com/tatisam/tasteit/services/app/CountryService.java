@@ -13,6 +13,9 @@ public interface CountryService {
     CountryDTO createCountry(CountryDTO dto);
     CountryResponse getAllCountries(int pageNo, int pageSize, String sortDir, String sortBy);
     CountryDTO getCountryById(long id);
+    CountryDTO getCountryByName(String name);
+    CountryDTO getRandomCountry();
     CountryDTO updateCountryById(long id, CountryDTO dto);
+    CountryDTO addRatingToCountry(long id, int newRateValue);
     void deleteCountryById(long id);
 }

@@ -40,6 +40,7 @@ public class DishServiceImpl implements DishService {
      * @param countryId {@link Country} id
      * @param dto {@link DishDTO}
      * @return {@link DishDTO} from created {@link Dish}
+     * @throws ResourceNotFoundException when {@link Country} not exists in database
      * @since 03/03/22
      */
     @Override
@@ -65,10 +66,22 @@ public class DishServiceImpl implements DishService {
     }
 
     /**
+     * Get {@link Dish} by id
+     * @param dishId {@link Dish} id
+     * @return {@link DishDTO}
+     * @since 22/04/22
+     */
+    @Override
+    public DishDTO getDishById(long dishId) {
+        return toDto.map(getDishEntityById(dishId));
+    }
+
+    /**
      * Update {@link Dish} in database by id
      * @param id {@link Dish} id
      * @param dto {@link DishDTO}
      * @return {@link DishDTO}
+     * @throws ResourceNotFoundException when {@link Dish} not exists in database
      * @since 03/03/22
      */
     @Override
@@ -85,6 +98,8 @@ public class DishServiceImpl implements DishService {
     /**
      * Delete {@link Dish} from database by id
      * @param id {@link Dish} id
+     * @throws ResourceNotFoundException when {@link Dish} not exists in database
+     * @return {@link DishDTO}
      * @since 03/03/22
      */
     @Override
@@ -93,5 +108,17 @@ public class DishServiceImpl implements DishService {
                 .orElseThrow(()-> new ResourceNotFoundException("Dish", "id", id));
         dishRepository.delete(dish);
         return toDto.map(dish);
+    }
+
+    /**
+     * Helper method gets {@link Dish} from database by id
+     * @param id {@link Dish} id
+     * @return {@link Dish}
+     * @throws ResourceNotFoundException if {@link Dish} not exists in database
+     * @since 22/04/22
+     */
+    private Dish getDishEntityById(long id){
+        return dishRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Dish", "id", id));
     }
 }

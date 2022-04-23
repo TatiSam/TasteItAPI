@@ -13,6 +13,7 @@ import java.util.List;
 public interface DishService {
     DishDTO createDish(long countryId, DishDTO dto);
     List<DishDTO> getDishesByCountryId(long countryId);
+    DishDTO getDishById(long dishId);
     DishDTO updateDishById(long id, DishDTO dto);
     DishDTO deleteDishById(long id);
 }

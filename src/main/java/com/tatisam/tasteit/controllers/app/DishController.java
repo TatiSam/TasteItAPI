@@ -51,6 +51,17 @@ public class DishController {
     }
 
     /**
+     * Get {@link com.tatisam.tasteit.entities.app.Dish} by id
+     * @param id {@link com.tatisam.tasteit.entities.app.Dish} id
+     * @return {@link ResponseEntity} with status Ok and {@link DishDTO}
+     * @since 22/04/22
+     */
+    @GetMapping("/dishes/{id}")
+    public ResponseEntity<DishDTO> getDishById(@PathVariable long id){
+        return ResponseEntity.ok().body(dishService.getDishById(id));
+    }
+
+    /**
      * Update {@link com.tatisam.tasteit.entities.app.Dish} in database by id
      * @param id {@link com.tatisam.tasteit.entities.app.Dish} id
      * @param dto {@link DishDTO}
