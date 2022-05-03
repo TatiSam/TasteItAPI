@@ -88,8 +88,8 @@ Israel
 
 ## TODO
 <ul>
-  <li>Get Country By Name</li>
-  <li>Get Random Country</li>
+  <li>Get Country By Name - done</li>
+  <li>Get Random Country - done</li>
   <li>Get Countries By Сontinent</li>
   <li>Get All Dishes</li>
   <li>Get Random Dish</li>
