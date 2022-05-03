@@ -42,7 +42,6 @@ public class CommentServiceImpl implements CommentService {
      * @param countryId {@link Country} id
      * @param dto {@link CommentDTO}
      * @return {@link CommentDTO} from created {@link Comment}
-     * @throws {@link ResourceNotFoundException} when country with countryId not exists in database
      * @since 22/03/22
      */
     @Override
@@ -73,7 +72,6 @@ public class CommentServiceImpl implements CommentService {
      * @param commentId {@link Comment} id
      * @param dto {@link CommentDTO}
      * @return {@link CommentDTO} from updated Comment
-     * @throws {@link ResourceNotFoundException} when comment with commentId not exists in database
      * @since 22/03/22
      */
     @Override
@@ -92,7 +90,6 @@ public class CommentServiceImpl implements CommentService {
      * Delete {@link Comment} from database by id
      * @param commentId {@link Comment} id
      * @return deleted {@link CommentDTO}
-     * @throws {@link ResourceNotFoundException} when comment with commentId not exists in database
      * @since 22/03/22
      */
     @Override

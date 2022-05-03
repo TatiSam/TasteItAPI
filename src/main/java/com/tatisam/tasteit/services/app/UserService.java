@@ -2,7 +2,7 @@ package com.tatisam.tasteit.services.app;
 
 import com.tatisam.tasteit.payload.app.CountryDTO;
 import com.tatisam.tasteit.payload.app.DishDTO;
-import com.tatisam.tasteit.payload.auth.LoginDTO;
+import com.tatisam.tasteit.payload.app.UserDTO;
 
 import java.util.List;
 
@@ -13,10 +13,10 @@ import java.util.List;
  * @since 22/04/22
  */
 public interface UserService {
-    String addCountryToUser(LoginDTO dto, long countryId);
-    String deleteCountryFromUser(LoginDTO dto, long countryId);
-    String addDishToUser(LoginDTO dto, long dishId);
-    String deleteDishFromUser(LoginDTO dto, long dishId);
-    List<CountryDTO> getUsersCountries(LoginDTO dto);
-    List<DishDTO> getUsersDishes(LoginDTO dto);
+    CountryDTO addCountryToUser(UserDTO dto, long countryId);
+    CountryDTO deleteCountryFromUser(UserDTO dto, long countryId);
+    DishDTO addDishToUser(UserDTO dto, long dishId);
+    DishDTO deleteDishFromUser(UserDTO dto, long dishId);
+    List<CountryDTO> getUserCountries(String userNameOrEmail);
+    List<DishDTO> getUserDishes(String userNameOrEmail);
 }

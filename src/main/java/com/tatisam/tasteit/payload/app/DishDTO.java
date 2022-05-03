@@ -2,7 +2,7 @@ package com.tatisam.tasteit.payload.app;
 
 import lombok.*;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -19,15 +19,15 @@ import javax.validation.constraints.Size;
 public class DishDTO {
     private long id;
 
-    @NotEmpty(message = "{com.tatisam.constraints.dishName.NotNull.message}")
+    @NotNull(message = "{com.tatisam.constraints.dishName.NotNull.message}")
     @Size(min = 2, message = "{com.tatisam.constraints.dishName.Size.message}")
     private String name;
 
-    @NotEmpty(message = "{com.tatisam.constraints.dishArticle.NotNull.message}")
+    @NotNull(message = "{com.tatisam.constraints.dishArticle.NotNull.message}")
     @Size(min = 10, message = "{com.tatisam.constraints.dishArticle.Size.message}")
     private String article;
 
-    @NotEmpty(message = "{com.tatisam.constraints.dishImgPath.NotNull.message}")
+    @NotNull(message = "{com.tatisam.constraints.dishImgPath.NotNull.message}")
     @Size(min = 6, message = "{com.tatisam.constraints.dishImgPath.Size.message}")
     private String imgPath;
 }

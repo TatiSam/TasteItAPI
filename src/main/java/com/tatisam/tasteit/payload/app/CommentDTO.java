@@ -24,10 +24,10 @@ public class CommentDTO {
     private Date date;
 
     @NotEmpty(message = "{com.tatisam.constraints.name.NotEmpty.message}")
-    private String name;
+    private String authorName;
 
     @NotEmpty(message = "{com.tatisam.constraints.email.NotEmpty.message}")
-    private String email;
+    private String authorEmail;
 
     @NotEmpty(message = "{com.tatisam.constraints.commentBody.NotEmpty.message}")
     private String body;

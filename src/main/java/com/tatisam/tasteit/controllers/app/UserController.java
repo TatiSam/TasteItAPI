@@ -2,7 +2,7 @@ package com.tatisam.tasteit.controllers.app;
 
 import com.tatisam.tasteit.payload.app.CountryDTO;
 import com.tatisam.tasteit.payload.app.DishDTO;
-import com.tatisam.tasteit.payload.auth.LoginDTO;
+import com.tatisam.tasteit.payload.app.UserDTO;
 import com.tatisam.tasteit.services.app.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,79 +28,81 @@ public class UserController {
 
     /**
      * Add {@link com.tatisam.tasteit.entities.app.Country} to user
-     * @param dto {@link LoginDTO}
+     * @param dto {@link UserDTO}
      * @param countryId {@link com.tatisam.tasteit.entities.app.Country} id
-     * @return {@link ResponseEntity} with status Ok and message "Added"
+     * @return {@link ResponseEntity} with status Ok added {@link CountryDTO}
      * @since 22/04/22
      */
     @PostMapping("/countries/{id}")
-    public ResponseEntity<String> addCountryToUser(
-            @Valid @RequestBody LoginDTO dto,
+    public ResponseEntity<CountryDTO> addCountryToUser(
+            @Valid @RequestBody UserDTO dto,
             @PathVariable("id") long countryId){
         return ResponseEntity.ok().body(userService.addCountryToUser(dto, countryId));
     }
 
     /**
      * Delete  {@link com.tatisam.tasteit.entities.app.Country} from user
-     * @param dto {@link LoginDTO}
+     * @param dto {@link UserDTO}
      * @param countryId {@link com.tatisam.tasteit.entities.app.Country} id
-     * @return {@link ResponseEntity} with status Ok and message "Deleted"
+     * @return {@link ResponseEntity} with status Ok and deleted {@link CountryDTO}
      * @since 22/04/22
      */
     @DeleteMapping("/countries/{id}")
-    public ResponseEntity<String> deleteCountryFromUser(
-            @Valid @RequestBody LoginDTO dto,
+    public ResponseEntity<CountryDTO> deleteCountryFromUser(
+            @Valid @RequestBody UserDTO dto,
             @PathVariable("id") long countryId){
         return ResponseEntity.ok().body(userService.deleteCountryFromUser(dto, countryId));
     }
 
     /**
      * Add {@link com.tatisam.tasteit.entities.app.Dish} to user
-     * @param dto {@link LoginDTO}
+     * @param dto {@link UserDTO}
      * @param dishId {@link com.tatisam.tasteit.entities.app.Dish} id
-     * @return {@link ResponseEntity} with status Ok and message "Added"
+     * @return {@link ResponseEntity} with status Ok and added {@link DishDTO}
      * @since 22/04/22
      */
     @PostMapping("/dishes/{id}")
-    public ResponseEntity<String> addDishToUser(
-            @Valid @RequestBody LoginDTO dto,
+    public ResponseEntity<DishDTO> addDishToUser(
+            @Valid @RequestBody UserDTO dto,
             @PathVariable("id") long dishId){
         return ResponseEntity.ok().body(userService.addDishToUser(dto, dishId));
     }
 
     /**
      * Delete {@link com.tatisam.tasteit.entities.app.Dish} from user
-     * @param dto {@link LoginDTO}
+     * @param dto {@link UserDTO}
      * @param dishId {@link com.tatisam.tasteit.entities.app.Dish} id
-     * @return {@link ResponseEntity} with status Ok and message "Deleted"
+     * @return {@link ResponseEntity} with status Ok and deleted {@link DishDTO}
      * @since 22/04/22
      */
     @DeleteMapping("/dishes/{id}")
-    public ResponseEntity<String> deleteDishFromUser(
-            @Valid @RequestBody LoginDTO dto,
+    public ResponseEntity<DishDTO> deleteDishFromUser(
+            @Valid @RequestBody UserDTO dto,
             @PathVariable("id") long dishId){
         return ResponseEntity.ok().body(userService.deleteDishFromUser(dto, dishId));
     }
 
     /**
      * Get List of {@link com.tatisam.tasteit.entities.app.Country} from user
-     * @param dto {@link LoginDTO}
+     * @param userNameOrEmail userName or email
      * @return {@link ResponseEntity} with status Ok and List of {@link CountryDTO}
      * @since 22/04/22
      */
     @GetMapping("/countries")
-    public ResponseEntity<List<CountryDTO>> getUsersCountries(@Valid @RequestBody LoginDTO dto){
-        return ResponseEntity.ok().body(userService.getUsersCountries(dto));
+    public ResponseEntity<List<CountryDTO>> getUserCountries(@Valid @RequestParam(value = "userNameOrEmail")
+                                                                          String userNameOrEmail){
+        return ResponseEntity.ok().body(userService.getUserCountries(userNameOrEmail));
     }
 
     /**
      * Get List of {@link com.tatisam.tasteit.entities.app.Dish} from user
-     * @param dto {@link LoginDTO}
+     * @param userNameOrEmail userName or email
      * @return {@link ResponseEntity} with status Ok and List of {@link DishDTO}
      * @since 22/04/22
      */
     @GetMapping("/dishes")
-    public ResponseEntity<List<DishDTO>> getUsersDishes(@Valid @RequestBody LoginDTO dto){
-        return ResponseEntity.ok().body(userService.getUsersDishes(dto));
+    public ResponseEntity<List<DishDTO>> getUserDishes(@Valid @RequestParam(value = "userNameOrEmail")
+                                                                    String userNameOrEmail){
+        return ResponseEntity.ok().body(userService.getUserDishes(userNameOrEmail));
     }
 }

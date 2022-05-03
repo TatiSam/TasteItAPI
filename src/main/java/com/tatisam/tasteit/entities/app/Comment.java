@@ -20,7 +20,7 @@ import java.util.Date;
 @Builder
 @Entity
 @Table(name = "comments")
-public class Comment {
+public class Comment{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private long id;
@@ -29,8 +29,13 @@ public class Comment {
     @CreationTimestamp
     private Date date;
 
-    private String name;
-    private String email;
+    @Column(nullable = false)
+    private String authorName;
+
+    @Column(nullable = false)
+    private String authorEmail;
+
+    @Column(nullable = false)
     private String body;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -2,6 +2,7 @@ package com.tatisam.tasteit.controllers.app;
 
 import com.tatisam.tasteit.payload.app.CountryDTO;
 import com.tatisam.tasteit.payload.app.CountryResponse;
+import com.tatisam.tasteit.payload.app.RatingDTO;
 import com.tatisam.tasteit.services.app.CountryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
 
 /**
  * RestController for work with {@link CountryService}
@@ -123,13 +125,13 @@ public class CountryController {
     /**
      * Add rating to  {@link com.tatisam.tasteit.entities.app.Country}
      * @param id {@link com.tatisam.tasteit.entities.app.Country} id
-     * @param newRateValue rating value from user
+     * @param dto {@link RatingDTO} from user
      * @return {@link ResponseEntity} with status Ok and updated {@link CountryDTO}
-     * @since 22/04/22
+     * @since 02/05/22
      */
-    @PostMapping("/{id}/rating/{newRateValue}")
-    public ResponseEntity<CountryDTO> addRatingToCountry(@PathVariable("id") long id,
-                                              @PathVariable("newRateValue") int newRateValue){
-        return ResponseEntity.ok().body(countryService.addRatingToCountry(id, newRateValue));
+    @PostMapping("/{id}/rating")
+    public ResponseEntity<CountryDTO> addRatingToCountry(@PathVariable long id,
+                                                         @Valid @RequestBody RatingDTO dto){
+        return ResponseEntity.ok().body(countryService.addRatingToCountry(id, dto));
     }
 }

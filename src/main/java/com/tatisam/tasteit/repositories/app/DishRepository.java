@@ -14,5 +14,4 @@ import java.util.List;
  */
 public interface DishRepository extends JpaRepository<Dish, Long> {
     List<Dish> findDishesByCountryId(long id);
-    Boolean existsDishByName(String name);
 }

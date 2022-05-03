@@ -1,11 +1,14 @@
 package com.tatisam.tasteit.services.app.impl;
 
 import com.tatisam.tasteit.entities.app.Country;
+import com.tatisam.tasteit.entities.app.Rating;
 import com.tatisam.tasteit.exceptions.app.DuplicateResourceException;
 import com.tatisam.tasteit.exceptions.app.ResourceNotFoundException;
 import com.tatisam.tasteit.payload.app.CountryDTO;
 import com.tatisam.tasteit.payload.app.CountryResponse;
+import com.tatisam.tasteit.payload.app.RatingDTO;
 import com.tatisam.tasteit.repositories.app.CountryRepository;
+import com.tatisam.tasteit.repositories.app.RatingRepository;
 import com.tatisam.tasteit.services.app.CountryService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
@@ -17,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -29,11 +33,13 @@ import java.util.stream.Collectors;
 @Service
 public class CountryServiceImpl implements CountryService {
     private final CountryRepository countryRepository;
+    private final RatingRepository ratingRepository;
     private final TypeMap<CountryDTO, Country> toCountry;
     private final TypeMap<Country, CountryDTO> toDto;
 
-    public CountryServiceImpl(CountryRepository countryRepository, ModelMapper modelMapper) {
+    public CountryServiceImpl(CountryRepository countryRepository, RatingRepository ratingRepository, ModelMapper modelMapper) {
         this.countryRepository = countryRepository;
+        this.ratingRepository = ratingRepository;
         toCountry = modelMapper.createTypeMap(CountryDTO.class, Country.class);
         toDto = modelMapper.createTypeMap(Country.class, CountryDTO.class);
     }
@@ -136,19 +142,23 @@ public class CountryServiceImpl implements CountryService {
     /**
      * Add rating to {@link Country}
      * @param id {@link Country} id
-     * @param newRateValue rating value from user
+     * @param dto {@link RatingDTO} from user
      * @return updated {@link CountryDTO}
-     * @since 22/04/22
+     * @since 02/05/22
      */
     @Override
-    public CountryDTO addRatingToCountry(long id, int newRateValue) {
+    public CountryDTO addRatingToCountry(long id, RatingDTO dto) {
         Country country = getCountryEntityById(id);
-        int rateCount = country.getRateCount();
-        double rating = country.getRating();
-        double newRating = (rating * rateCount + newRateValue)/(++rateCount);
-        newRating = Math.round(newRating*100.0)/100.0;
-        country.setRateCount(rateCount);
-        country.setRating(newRating);
+        var rating = ratingRepository.getRatingByCountryAndIp(country, dto.getIp());
+        if(rating == null){
+            rating = new Rating();
+            rating.setCountry(country);
+            rating.setIp(dto.getIp());
+        }
+        rating.setRating(dto.getRating());
+        ratingRepository.save(rating);
+        country.setRateCount(country.getRatings().size());
+        country.setAverageRating(getAverageRating(country.getRatings()));
         return toDto.map(countryRepository.save(country));
     }
 
@@ -172,5 +182,20 @@ public class CountryServiceImpl implements CountryService {
     private Country getCountryEntityById(long id){
         return countryRepository.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Country", "id", id));
+    }
+
+    /**
+     * Helper method get average rating from Set {@link Rating}
+     * @param ratings Set {@link Rating}
+     * @return averageRating
+     * @since 02/05/22
+     */
+    private double getAverageRating(Set<Rating> ratings){
+        int sum = 0;
+        for(Rating r: ratings){
+            sum += r.getRating();
+        }
+        double avg = (double) sum/ratings.size();
+        return (double) Math.round(avg*100)/100;
     }
 }

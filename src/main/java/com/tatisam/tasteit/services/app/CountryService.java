@@ -2,6 +2,7 @@ package com.tatisam.tasteit.services.app;
 
 import com.tatisam.tasteit.payload.app.CountryDTO;
 import com.tatisam.tasteit.payload.app.CountryResponse;
+import com.tatisam.tasteit.payload.app.RatingDTO;
 
 /**
  * Interface for implementing by Country Service
@@ -16,6 +17,6 @@ public interface CountryService {
     CountryDTO getCountryByName(String name);
     CountryDTO getRandomCountry();
     CountryDTO updateCountryById(long id, CountryDTO dto);
-    CountryDTO addRatingToCountry(long id, int newRateValue);
+    CountryDTO addRatingToCountry(long id, RatingDTO dto);
     void deleteCountryById(long id);
 }
