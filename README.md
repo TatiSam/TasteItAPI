@@ -5,7 +5,7 @@ TasteIt API contains information about the most loved and most popular dishes in
 
 ### Pagination: 
 
-Requests that return multiple items will be limited to 25 results by default. You can access other pages using the ?page paramater.
+Request that return multiple items will be limited to 25 results by default. You can access other pages using the ?page paramater.
 
 http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/page?pageNo=0
 
@@ -48,9 +48,17 @@ Gets Countries from the API, you can apply several filters using url parameters,
   </tr>
 </table>
 
-### Get a single Country:
+### Get Country by id:
 
 http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/1
+
+### Get Country by name:
+
+http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/name/slovenia
+
+### Get random Country:
+
+http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/random
 
 ### Get dishes by Country id:
 
