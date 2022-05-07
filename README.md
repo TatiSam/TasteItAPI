@@ -7,11 +7,11 @@ TasteIt API contains information about the most loved and most popular dishes in
 
 Request that return multiple items will be limited to 25 results by default. You can access other pages using the ?page paramater.
 
-http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/page?pageNo=0
+http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/page?pageNo=0
 
 ### Get Countries:
 
-http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/page
+http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/page
 
 Gets Countries from the API, you can apply several filters using url parameters, the available options are listed below.
 
@@ -50,23 +50,23 @@ Gets Countries from the API, you can apply several filters using url parameters,
 
 ### Get Country by id:
 
-http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/1
+http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/1
 
 ### Get Country by name:
 
-http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/name/slovenia
+http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/name/slovenia
 
 ### Get random Country:
 
-http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/random
+http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/random
 
 ### Get dishes by Country id:
 
-http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/1/dishes
+http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/1/dishes
 
 ### Get comments by Country id:
 
-http://tasteit-env.eba-zcmqefys.us-east-1.elasticbeanstalk.com/api/1/countries/1/comments
+http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/1/comments
 
 ## Architecture and Tech features
 <ul>
