@@ -1,11 +1,11 @@
 # Taste It API
-Spring Boot REST API Project
+Java Spring Boot REST API Project
 
 Taste It API contains information about the most loved and most popular dishes in different countries. In this API you will find information about the country that interests you and about those national dishes that you should definitely try there.
 
 ## Architecture and Tech features
 <ul>
-  <li>Written in <a href="https://www.java.com/">Java</a> language uses <a href="https://spring.io/projects/spring-boot">Spring Boot</a></li>
+  <li>Written in <a href="https://spring.io/projects/spring-boot">Java Spring Boot</a></li>
   <li><a href="https://spring.io/projects/spring-data-jpa">Spring Data JPA</a> for working with database</li>
   <li><a href="https://spring.io/projects/spring-security">Spring Security</a> for authentication and access-control</li>
   <li><a href="https://en.wikipedia.org/wiki/Bcrypt">BCrypt</a> password encoder for encode password</li>
@@ -31,7 +31,7 @@ http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries
 
 http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/page
 
-Gets Countries from the API, you can apply several filters using url parameters, the available options are listed below.
+To get the Countries from the API, you can apply several filters using url parameters, the available options are listed below.
 
 <table>
   <tr>
@@ -92,12 +92,10 @@ http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/auth/sign
 
 Method: Post
 
-Request body:
-{
-    "userName": "your userName",
-    "email": "your email",
-    "password":"your password"
-}
+Request body:<br/>
+{"userName": "your userName",<br/>
+    "email": "your email",<br/>
+    "password": "your password"}
 
 ### Login user
 
@@ -105,11 +103,9 @@ http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/auth/logi
 
 Method: Post
 
-Request body:
-{
-    "userNameOrEmail": "your userName or email",
-    "password": "your password"
-}
+Request body:<br/>
+{"userNameOrEmail": "your userName or email",<br/>
+"password": "your password"}
 
 ### Post comment
 
@@ -117,14 +113,12 @@ http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries
 
 Method: Post
 
-Header: 'Authorization: Bearer yourBearerToken'
+Header: "Authorization: Bearer yourBearerToken"
 
-Request body:
-{
-    "name": "your name",
-    "email": "your email",
-    "body": "your comment"
-}
+Request body:<br/>
+{"name": "your name",<br/>
+"email": "your email",<br/>
+"body": "your comment"}
 
 ### Edit comment
 
@@ -132,14 +126,12 @@ http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/comments/
 
 Method: Put
 
-Header: 'Authorization: Bearer yourBearerToken'
+Header: "Authorization: Bearer yourBearerToken"
 
-Request body:
-{
-    "name": "your name",
-    "email": "your email",
-    "body": "your edited comment"
-}
+Request body:<br/>
+{"name": "your name",<br/>
+"email": "your email",<br/>
+"body": "your edited comment"}
 
 ### Delit comment
 
@@ -147,7 +139,7 @@ http://http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/co
 
 Method: Delete
 
-Header: 'Authorization: Bearer yourBearerToken'
+Header: "Authorization: Bearer yourBearerToken"
 
 ### Add rating
 
@@ -155,11 +147,9 @@ http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries
 
 Method: Post
 
-Request body:
-{
-    "ip": "your ip",
-    "rating": your rating (number from 1 to 5)
-}
+Request body:<br/>
+{"ip": "your ip",<br/>
+"rating": your rating (number from 1 to 5)}
 
 ### Add country to user preferences
 
@@ -167,12 +157,10 @@ http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/user/coun
 
 Method: Post
 
-Header: 'Authorization: Bearer yourBearerToken'
+Header: "Authorization: Bearer yourBearerToken"
 
-Request body:
-{
-    "userNameOrEmail": "your userName or email"
-}
+Request body:<br/>
+{"userNameOrEmail": "your userName or email"}
 
 ### Delete country from user preferences
 
@@ -180,12 +168,10 @@ http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/user/coun
 
 Method: Delete
 
-Header: 'Authorization: Bearer yourBearerToken'
+Header: "Authorization: Bearer yourBearerToken"
 
-Request body:
-{
-    "userNameOrEmail": "your userName or email"
-}
+Request body:<br/>
+{"userNameOrEmail": "your userName or email"}
 
 ### Get list of countries from user preferences
 
@@ -193,7 +179,7 @@ http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/user/coun
 
 Method: Get
 
-Header: 'Authorization: Bearer yourBearerToken'
+Header: "Authorization: Bearer yourBearerToken"
 
 ### Add dish to user preferences
 
@@ -201,12 +187,10 @@ http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/user/dish
 
 Method: Post
 
-Header: 'Authorization: Bearer yourBearerToken'
+Header: "Authorization: Bearer yourBearerToken"
 
-Request body:
-{
-    "userNameOrEmail": "your userName or email"
-}
+Request body:<br/>
+{"userNameOrEmail": "your userName or email"}
 
 ### Delete country from user preferences
 
@@ -214,12 +198,10 @@ http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/user/dish
 
 Method: Delete
 
-Header: 'Authorization: Bearer yourBearerToken'
+Header: "Authorization: Bearer yourBearerToken"
 
-Request body:
-{
-    "userNameOrEmail": "your userName or email"
-}
+Request body:<br/>
+{"userNameOrEmail": "your userName or email"}
 
 ### Get list of dishes from user preferences
 
@@ -227,7 +209,7 @@ http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/user/dish
 
 Method: Get
 
-Header: 'Authorization: Bearer yourBearerToken'
+Header: "Authorization: Bearer yourBearerToken"
 
 ## Author
 
