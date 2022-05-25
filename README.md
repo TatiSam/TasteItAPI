@@ -18,18 +18,19 @@ Taste It API contains information about the most loved and most popular dishes i
   <li><a href="https://www.mysql.com/">MySQL</a> database for production mode</li>
   <li>Design Patterns: Singleton, Builder, Dependency Injection, Three Layer Architecture</li>
   <li>TDD with integration testing</li>
-  <li><a href="https://aws.amazon.com/">Amazon Web Services</a> for storage database and server side API</li>
+  <li><a href="https://aws.amazon.com">Amazon Web Servisec</a> for storage database</li>
+  <li><a href="https://www.heroku.com">Heroku</a> for storage server side API</li>
 </ul>
 
 ### Pagination: 
 
 Request that return multiple items will be limited to 25 results by default. You can access other pages using the ?page paramater.
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/page?pageNo=0
+https://tasteit-api.herokuapp.com/api/1/countries/page?pageNo=0
 
 ### Get Countries:
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/page
+https://tasteit-api.herokuapp.com/api/1/countries/page
 
 To get the Countries from the API, you can apply several filters using url parameters, the available options are listed below.
 
@@ -68,27 +69,27 @@ To get the Countries from the API, you can apply several filters using url param
 
 ### Get Country by id:
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/1
+https://tasteit-api.herokuapp.com/api/1/countries/1
 
 ### Get Country by name:
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/name/slovenia
+https://tasteit-api.herokuapp.com/api/1/countries/name/slovenia
 
 ### Get random Country:
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/random
+https://tasteit-api.herokuapp.com/api/1/countries/random
 
 ### Get dishes by Country id:
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/1/dishes
+https://tasteit-api.herokuapp.com/api/1/countries/1/dishes
 
 ### Get comments by Country id:
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/1/comments
+https://tasteit-api.herokuapp.com/api/1/countries/1/comments
 
 ### Register user
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/auth/signup
+https://tasteit-api.herokuapp.com/api/1/auth/signup
 
 Method: Post
 
@@ -99,7 +100,7 @@ Request body:<br/>
 
 ### Login user
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/auth/login
+https://tasteit-api.herokuapp.com/api/1/auth/login
 
 Method: Post
 
@@ -109,7 +110,7 @@ Request body:<br/>
 
 ### Post comment
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/{countryId}/comments
+https://tasteit-api.herokuapp.com/api/1/countries/{countryId}/comments
 
 Method: Post
 
@@ -122,7 +123,7 @@ Request body:<br/>
 
 ### Edit comment
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/comments/{commentId}
+https://tasteit-api.herokuapp.com/api/1/comments/{commentId}
 
 Method: Put
 
@@ -135,7 +136,7 @@ Request body:<br/>
 
 ### Delit comment
 
-http://http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/comments/{commentId}
+https://tasteit-api.herokuapp.com/api/1/comments/{commentId}
 
 Method: Delete
 
@@ -143,7 +144,7 @@ Header: "Authorization: Bearer yourBearerToken"
 
 ### Add rating
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/countries/{countryId}/rating
+https://tasteit-api.herokuapp.com/api/1/countries/{countryId}/rating
 
 Method: Post
 
@@ -153,7 +154,7 @@ Request body:<br/>
 
 ### Add country to user preferences
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/user/countries/{countryId}
+https://tasteit-api.herokuapp.com/api/1/user/countries/{countryId}
 
 Method: Post
 
@@ -164,7 +165,7 @@ Request body:<br/>
 
 ### Delete country from user preferences
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/user/countries/{countryId}
+https://tasteit-api.herokuapp.com/api/1/user/countries/{countryId}
 
 Method: Delete
 
@@ -175,7 +176,7 @@ Request body:<br/>
 
 ### Get list of countries from user preferences
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/user/countries?userNameOrEmail={yourUserNameOrEmail}
+https://tasteit-api.herokuapp.com/api/1/user/countries?userNameOrEmail={yourUserNameOrEmail}
 
 Method: Get
 
@@ -183,7 +184,7 @@ Header: "Authorization: Bearer yourBearerToken"
 
 ### Add dish to user preferences
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/user/dishes/{dishId}
+https://tasteit-api.herokuapp.com/api/1/user/dishes/{dishId}
 
 Method: Post
 
@@ -194,7 +195,7 @@ Request body:<br/>
 
 ### Delete country from user preferences
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/user/dishes/{dishId}
+https://tasteit-api.herokuapp.com/api/1/user/dishes/{dishId}
 
 Method: Delete
 
@@ -205,7 +206,7 @@ Request body:<br/>
 
 ### Get list of dishes from user preferences
 
-http://tasteit-env-1.eba-ccgwvped.us-east-1.elasticbeanstalk.com/api/1/user/dishes?userNameOrEmail={yourUserNameOrEmail}
+https://tasteit-api.herokuapp.com/api/1/user/dishes?userNameOrEmail={yourUserNameOrEmail}
 
 Method: Get
 
