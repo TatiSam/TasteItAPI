@@ -20,7 +20,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping("api/1/countries")
-@CrossOrigin(origins = {"http://localhost:8080"})
+@CrossOrigin(origins = {"https://tasteit-tatisam.herokuapp.com"})
 public class CountryController {
     private final CountryService countryService;
 

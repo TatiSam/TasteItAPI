@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("api/1/user")
-@CrossOrigin(origins = {"http://localhost:8080"})
+@CrossOrigin(origins = {"https://tasteit-tatisam.herokuapp.com"})
 public class UserController {
     private final UserService userService;
 

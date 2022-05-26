@@ -17,7 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/1")
-@CrossOrigin(origins = {"http://localhost:8080"})
+@CrossOrigin(origins = {"https://tasteit-tatisam.herokuapp.com"})
 public class CommentController {
     private final CommentService commentService;
 
