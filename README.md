@@ -1,7 +1,7 @@
-# Taste It API
+# "Taste It" API
 Java Spring Boot REST API Project
 
-Taste It API contains information about the most loved and most popular dishes in different countries. In this API you will find information about the country that interests you and about those national dishes that you should definitely try there.
+"Taste It" API contains information about the most loved and most popular dishes in different countries. In this API you will find information about the country that interests you and about those national dishes that you should definitely try there.
 
 ## Architecture and Tech features
 <ul>
